@@ -1,0 +1,25 @@
+<ion-content style="background:black">
+  <div class="splash-bg"></div>
+  <div class="splash-info">
+    <h1 style="color: white;font: size 2vw;">Você conhece mesmo a saga Harry Potter?</h1>
+    <div class="splash-logo"> </div>
+    <div class="splash-intro">
+    </div>
+    <em style="color: white">Este teste foi criado para você!</em>
+  
+  </div>
+  <form #f="ngForm" class="mb">
+      <button *ngIf="btn===true" ion-button  color="success" (click)="jogar()">Jogar novamente</button>
+      <h4 style="color: white">acerto:{{acerto}}</h4>
+    <ion-list *ngFor="let list of perguntas;let i = index">
+      <ion-item *ngIf="list.set===1">
+        <ion-label floating>{{list.pergunta}}</ion-label>
+        <ion-input name="{{i}}" [ngModel]></ion-input>
+        <button ion-button item-end color="success" (click)="resposta(f.value,i)"
+          *ngIf="list.cor==='t'">Resultado</button>
+        <ion-icon item-end color="secondary" name="thumbs-up" *ngIf="list.cor==='c'"> - Correto</ion-icon>
+        <ion-icon item-end color="danger" name="thumbs-down" *ngIf="list.cor==='e'"> - Errado</ion-icon>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
